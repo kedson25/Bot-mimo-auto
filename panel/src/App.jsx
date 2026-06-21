@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard'
 import FlowEditor from './pages/FlowEditor'
 import FlowList from './pages/FlowList'
 import Settings from './pages/Settings'
+import Jarvis from './pages/Jarvis'
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/jarvis" element={<Jarvis />} />
           <Route path="/flows" element={<FlowList />} />
           <Route path="/flows/new" element={<FlowEditor />} />
           <Route path="/flows/:id" element={<FlowEditor />} />

@@ -2,6 +2,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom'
 
 const menuItems = [
   { path: '/', label: 'Dashboard', icon: '📊' },
+  { path: '/jarvis', label: 'Jarvis', icon: '🤖' },
   { path: '/flows', label: 'Fluxos', icon: '🔀' },
   { path: '/settings', label: 'Configuracoes', icon: '⚙️' }
 ]

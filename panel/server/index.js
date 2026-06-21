@@ -4,6 +4,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import admin from 'firebase-admin'
 import fs from 'fs'
+import { execSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -155,6 +156,47 @@ app.put('/api/settings', async (req, res) => {
     res.json(localSettings)
   } catch (err) {
     res.status(500).json({ error: err.message })
+  }
+})
+
+// JARVIS ROUTE
+app.post('/api/jarvis', async (req, res) => {
+  try {
+    const { message, history } = req.body
+    if (!message) return res.status(400).json({ error: 'Mensagem obrigatoria' })
+
+    const systemPrompt = `Voce e o Jarvis, um assistente de IA avancado e pessoal. Voce e inteligente, eficiente e responde de forma direta e util. Seu criador e o dono deste sistema. Responda SEMPRE em português brasileiro. Seja conciso mas completo. Quando apropriado, sugira comandos ou acoes que o usuario pode tomar.`
+
+    let prompt = systemPrompt + '\n\n'
+    if (history && Array.isArray(history)) {
+      for (const msg of history.slice(-10)) {
+        prompt += msg.role === 'user' ? `Usuario: ${msg.content}\n` : `Jarvis: ${msg.content}\n`
+      }
+    }
+    prompt += `Usuario: ${message}\nJarvis:`
+
+    const escaped = prompt.replace(/"/g, '\\"').replace(/`/g, '\\`').replace(/\$/g, '\\$')
+    const command = `mimo run "${escaped}" 2>/dev/null`
+
+    const result = execSync(command, {
+      encoding: 'utf8',
+      timeout: 30000,
+      maxBuffer: 1024 * 1024
+    })
+
+    let reply = result.trim()
+    const lines = reply.split('\n')
+    let cleanReply = ''
+    for (const line of lines) {
+      if (line.startsWith('>') || line.includes('build') || line.includes('·')) continue
+      cleanReply += line + '\n'
+    }
+    reply = cleanReply.trim()
+
+    res.json({ reply: reply || 'Nao consegui processar isso.' })
+  } catch (err) {
+    console.error('Erro Jarvis:', err.message)
+    res.status(500).json({ error: 'Erro ao processar comando' })
   }
 })
 

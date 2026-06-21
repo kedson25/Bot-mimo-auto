@@ -9,3 +9,4 @@ bot.pid
 panel/node_modules/
 panel/dist/
 .env
+__pycache__/
