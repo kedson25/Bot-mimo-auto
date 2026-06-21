@@ -1,0 +1,7 @@
+{
+    "commands": {
+        "ajuda": "📋 *Comandos disponíveis:*\n\n🤖 *Assistente IA:*\n• Qualquer mensagem = respostas inteligentes com IA\n• Pesquise [assunto] = pesquisa detalhada com dados atualizados\n• Explique [tópico] = explicações claras e didáticas\n• Como [fazer algo] = passo a passo detalhado\n• Limpar = limpar histórico da conversa\n\n📝 *Listas e Arquivos:*\n• Crie lista [itens] = salva lista em arquivo\n• Lista = ver suas listas salvas\n\n⚙️ *Utilidades:*\n• Hora = hora atual\n• Data = data atual\n• Calcule [expressão] = calculadora\n\n💡 *Dica:* Quanto mais específico for sua pergunta, melhor será a resposta!",
+        "limpar": "🗑️ *Histórico limpo!* Pode começar uma nova conversa."
+    },
+    "fallback": "🤔 Não entendi direito. Você pode:\n• Digitar *ajuda* para ver os comandos\n• Mandar sua mensagem de outra forma\n• Ser mais específico na sua pergunta"
+}

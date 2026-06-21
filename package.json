@@ -1,0 +1,22 @@
+{
+  "name": "whatsapp-bot",
+  "version": "4.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "panel": "cd panel && npm run dev",
+    "panel:build": "cd panel && npm run build",
+    "panel:install": "cd panel && npm install",
+    "clear-history": "node -e \"const m = require('./mimo'); m.limparHistorico('all'); console.log('Histórico limpo!')\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "WhatsApp bot com MiMo Auto + Painel Visual",
+  "dependencies": {
+    "firebase-admin": "^13.10.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.34.7"
+  }
+}

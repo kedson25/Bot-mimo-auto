@@ -3,3 +3,9 @@ node_modules/
 .wwebjs_cache/
 .mimo_token.json
 *.log
+firebase-service-account.json
+sessions.json
+bot.pid
+panel/node_modules/
+panel/dist/
+.env
